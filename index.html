@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAVON × Dolphin Wave Media — Stratégia rastu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FDFAF6;--white:#FFFFFF;--black:#1A1A1A;--grey:#6B6B6B;
+  --light:#F2EDE6;--green:#4E7A5E;--green-light:#EBF2EE;--gold:#B8956A;
+  --border:#E8E0D6;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* TYPOGRAPHY */
+.serif{font-family:'Playfair Display',serif}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.2}
+.label{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem;display:block}
+.label.dark{color:var(--grey)}
+
+/* LAYOUT */
+.wrap{max-width:900px;margin:0 auto;padding:0 2rem}
+.wrap.wide{max-width:1100px}
+section{padding:5rem 0}
+section.cream{background:var(--cream)}
+section.light{background:var(--light)}
+
+/* DIVIDER */
+.divider{width:40px;height:2px;background:var(--green);margin:1.5rem 0}
+.divider.center{margin:1.5rem auto}
+.divider.gold{background:var(--gold)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:.05em}
+.nav-brand span{color:var(--green)}
+.nav-links{display:flex;gap:2rem;font-size:.8rem;color:var(--grey);font-weight:500}
+.nav-links a:hover{color:var(--black)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:7rem 0 5rem;background:var(--white);position:relative;overflow:hidden}
+.hero-leaf{position:absolute;right:-80px;top:50%;transform:translateY(-50%);opacity:.06;font-size:28rem;line-height:1;pointer-events:none;user-select:none}
+.hero-inner{position:relative}
+.hero-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:2rem;display:flex;align-items:center;gap:.75rem}
+.hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--green);display:inline-block}
+.hero-h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:400;color:var(--black);margin-bottom:.5rem;line-height:1.1}
+.hero-h1 em{font-style:italic;color:var(--green)}
+.hero-sub{font-size:1.05rem;color:var(--grey);margin-top:1.5rem;max-width:480px;line-height:1.8}
+.hero-meta{margin-top:3rem;display:flex;gap:2.5rem;flex-wrap:wrap}
+.hero-stat{border-left:2px solid var(--border);padding-left:1.25rem}
+.hero-stat-v{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:500;color:var(--black)}
+.hero-stat-l{font-size:.75rem;color:var(--grey);margin-top:.15rem}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-light);border:1px solid rgba(78,122,94,.2);border-radius:2px;padding:.5rem 1rem;font-size:.8rem;font-weight:500;color:var(--green);margin-top:2.5rem}
+
+/* INTRO — o nás */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+@media(max-width:700px){.two-col{grid-template-columns:1fr;gap:2.5rem}}
+.pillar-list{list-style:none;display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
+.pillar-item{display:flex;align-items:flex-start;gap:1rem;font-size:.9rem;color:var(--grey);line-height:1.6}
+.pillar-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:.45rem}
+
+/* NUMBERS ROW */
+.nums-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border:1px solid var(--border)}
+@media(max-width:600px){.nums-row{grid-template-columns:repeat(2,1fr)}}
+.num-box{background:var(--white);padding:2rem 1.5rem;text-align:center}
+.num-v{font-family:'Playfair Display',serif;font-size:2rem;font-weight:500;color:var(--black)}
+.num-l{font-size:.75rem;color:var(--grey);margin-top:.35rem;text-transform:uppercase;letter-spacing:.08em}
+
+/* USP CARD */
+.usp-card{background:var(--green);color:var(--white);padding:3rem;border-radius:0;margin:3rem 0}
+.usp-card h3{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:400;margin-bottom:1rem;color:var(--white)}
+.usp-card p{font-size:.9rem;opacity:.85;line-height:1.8}
+.usp-card .tag{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:.3rem .8rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;margin-top:1.5rem}
+
+/* SUCCESS FORMULA */
+.formula-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2.5rem}
+@media(max-width:600px){.formula-grid{grid-template-columns:1fr}}
+.formula-item{background:var(--white);padding:2rem 1.75rem}
+.formula-num{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--border);font-weight:400;line-height:1;margin-bottom:.75rem}
+.formula-title{font-size:.95rem;font-weight:600;color:var(--black);margin-bottom:.5rem}
+.formula-desc{font-size:.85rem;color:var(--grey);line-height:1.7}
+.formula-check{display:inline-block;margin-top:.75rem;font-size:.75rem;font-weight:600;color:var(--green);letter-spacing:.05em}
+
+/* STRATEGY STEPS */
+.strat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+@media(max-width:650px){.strat-grid{grid-template-columns:1fr}}
+.strat-card{border:1px solid var(--border);padding:2rem;position:relative}
+.strat-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--green)}
+.strat-card h4{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;margin-bottom:.75rem}
+.strat-card ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.strat-card li{font-size:.85rem;color:var(--grey);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
+.strat-card li::before{content:'—';color:var(--green);flex-shrink:0;font-size:.8rem;margin-top:.1rem}
+
+/* CASE STUDIES */
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+@media(max-width:600px){.case-grid{grid-template-columns:1fr}}
+.case-card{border:1px solid var(--border);overflow:hidden}
+.case-top{background:var(--black);padding:1.75rem 2rem}
+.case-top .co{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.5rem}
+.case-top h4{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:400;color:var(--white);line-height:1.3}
+.case-body{padding:2rem;background:var(--white)}
+.case-desc{font-size:.85rem;color:var(--grey);line-height:1.7;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.case-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.case-m-v{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:500;color:var(--black)}
+.case-m-l{font-size:.7rem;color:var(--grey);text-transform:uppercase;letter-spacing:.08em;margin-top:.15rem}
+.roas-highlight{background:var(--green-light);border:1px solid rgba(78,122,94,.2);padding:1rem 1.25rem;margin-top:1.25rem;display:flex;align-items:center;gap:.75rem}
+.roas-v{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:500;color:var(--green)}
+.roas-l{font-size:.8rem;color:var(--green);font-weight:500}
+
+/* PRICING */
+.price-box{border:2px solid var(--black);padding:3rem;max-width:620px;margin:2.5rem auto 0;text-align:center;position:relative}
+.price-box::before{content:'Odporúčame';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--white);padding:0 1rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);font-weight:600}
+.price-v{font-family:'Playfair Display',serif;font-size:3rem;font-weight:400;color:var(--black);line-height:1}
+.price-note{font-size:.85rem;color:var(--grey);margin-top:.5rem}
+.price-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin:2rem 0;text-align:left}
+.price-list li{font-size:.875rem;color:var(--grey);display:flex;gap:.75rem;align-items:flex-start}
+.price-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.price-divider{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
+.adspend-note{background:var(--light);padding:1.25rem 1.5rem;text-align:left;font-size:.825rem;color:var(--grey);line-height:1.7;margin-top:1.5rem;max-width:620px;margin-left:auto;margin-right:auto}
+.adspend-note strong{color:var(--black)}
+
+/* NEXT STEPS */
+.steps-list{list-style:none;display:flex;flex-direction:column;gap:0;margin-top:2.5rem;max-width:600px;counter-reset:steps}
+.step-item{display:flex;gap:1.5rem;padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.step-item:last-child{border-bottom:none}
+.step-n{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--border);flex-shrink:0;width:1.5rem;font-weight:400}
+.step-text h4{font-size:.9rem;font-weight:600;color:var(--black);margin-bottom:.3rem}
+.step-text p{font-size:.85rem;color:var(--grey);line-height:1.6}
+
+/* FOOTER CTA */
+#footer{background:var(--black);color:var(--white);padding:5rem 0;text-align:center}
+#footer h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;margin-bottom:1rem;color:var(--white)}
+#footer p{color:rgba(255,255,255,.55);font-size:.9rem;max-width:400px;margin:0 auto 2.5rem}
+.btn-white{display:inline-block;background:var(--white);color:var(--black);padding:.875rem 2.5rem;font-size:.85rem;font-weight:600;letter-spacing:.05em;transition:background .2s,color .2s}
+.btn-white:hover{background:var(--green);color:var(--white)}
+.footer-meta{margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);font-size:.75rem;color:rgba(255,255,255,.3);letter-spacing:.05em}
+
+/* SECTION HEADER */
+.sec-hdr{margin-bottom:3rem}
+.sec-hdr h2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:400;color:var(--black)}
+.sec-hdr p{font-size:.9rem;color:var(--grey);margin-top:.75rem;max-width:520px;line-height:1.8}
+
+/* PLATFORM ROW */
+.platform-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+@media(max-width:600px){.platform-row{grid-template-columns:1fr}}
+.platform-card{border:1px solid var(--border);padding:2rem}
+.platform-card .pl-name{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--grey);margin-bottom:.75rem;display:block}
+.platform-card h4{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:500;margin-bottom:1rem;color:var(--black)}
+.platform-card ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.platform-card li{font-size:.85rem;color:var(--grey);display:flex;gap:.6rem;line-height:1.5}
+.platform-card li::before{content:'—';color:var(--green);flex-shrink:0;font-size:.8rem}
+
+@media(max-width:700px){
+  nav .nav-links{display:none}
+  .nums-row{gap:1px}
+  .hero-meta{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">SAVON <span>×</span> Dolphin Wave Media</div>
+  <div class="nav-links">
+    <a href="#intro">O nás</a>
+    <a href="#strategy">Stratégia</a>
+    <a href="#cases">Výsledky</a>
+    <a href="#pricing">Ceny</a>
+    <a href="#next">Ďalší krok</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="leaf hero-leaf">🌿</div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Návrh spolupráce · 2026</div>
+      <h1 class="hero-h1">Stratégia rastu<br>pre <em>SAVON</em></h1>
+      <div class="divider"></div>
+      <p class="hero-sub">Ako zvýšiť obrat prírodnej kozmetiky SAVON prostredníctvom platenej reklamy na Meta a Google — s dôrazom na váš príbeh, unikátne byliny a produkty, ktoré si zaslúžia viditeľnosť.</p>
+      <div class="hero-meta">
+        <div class="hero-stat">
+          <div class="hero-stat-v">200 000€+</div>
+          <div class="hero-stat-l">Spravovaný budget</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-v">20+</div>
+          <div class="hero-stat-l">E-shopov</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-v">2+ roky</div>
+          <div class="hero-stat-l">V e-com marketingu</div>
+        </div>
+      </div>
+      <div class="badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+        Pripravené pre Ivetu Burešovú Mikletičovú · savon.sk
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O NÁS -->
+<section id="intro" class="cream">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <span class="label">Kto sme</span>
+        <h2 class="serif" style="font-size:1.8rem;font-weight:400;line-height:1.3">Dolphin Wave Media — performance marketing pre e-shopy</h2>
+        <div class="divider"></div>
+        <p style="font-size:.9rem;color:var(--grey);line-height:1.8">Zameriavame sa na e-commerce značky s vlastným produktom a dobrými maržami. Nerobíme len reklamy — pomáhame budovať celý systém rastu: stratégiu, kreatívu, bundles, upselly a reporting.</p>
+        <ul class="pillar-list">
+          <li><div class="pillar-dot"></div>Meta Ads (Facebook & Instagram) — full-funnel od akvizície po remarketing</li>
+          <li><div class="pillar-dot"></div>Google Ads — Search, Shopping, Performance Max</li>
+          <li><div class="pillar-dot"></div>Optimalizácia e-shopu — produktové bundles, upsell, ponuky</li>
+          <li><div class="pillar-dot"></div>Kreatíva — bannery, videá, UGC obsah</li>
+        </ul>
+      </div>
+      <div>
+        <span class="label">Čísla</span>
+        <div class="nums-row">
+          <div class="num-box">
+            <div class="num-v">200K€</div>
+            <div class="num-l">Spravovaný budget</div>
+          </div>
+          <div class="num-box">
+            <div class="num-v">20+</div>
+            <div class="num-l">E-shopov</div>
+          </div>
+          <div class="num-box">
+            <div class="num-v">2+ r.</div>
+            <div class="num-l">Skúsenosti</div>
+          </div>
+          <div class="num-box">
+            <div class="num-v">5,5×</div>
+            <div class="num-l">Priem. ROAS</div>
+          </div>
+        </div>
+        <p style="font-size:.82rem;color:var(--grey);margin-top:1.25rem;line-height:1.7">Pracujeme s e-shopmi v oblasti módy, kozmetiky, outdooru a špecializovaných produktov. Vieme, čo funguje na slovenskom a českom trhu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULA ÚSPEŠNÉHO E-SHOPU -->
+<section id="formula">
+  <div class="wrap">
+    <div class="sec-hdr">
+      <span class="label">Základ rastu</span>
+      <h2>Čo potrebuje e-com brand, aby rástol</h2>
+      <p>Tieto tri podmienky musí splniť každý úspešný e-shop pred tým, ako má zmysel investovať do reklamy.</p>
+    </div>
+    <div class="formula-grid">
+      <div class="formula-item">
+        <div class="formula-num">01</div>
+        <div class="formula-title">Vlastný produkt s dobrou maržou</div>
+        <div class="formula-desc">Bez zdravej marže reklamy nedávajú zmysel. Čím vyššia marža, tým väčší priestor na škálovanie.</div>
+        <div class="formula-check">✓ SAVON to spĺňa</div>
+      </div>
+      <div class="formula-item">
+        <div class="formula-num">02</div>
+        <div class="formula-title">Produkt, ktorý ľudia chcú</div>
+        <div class="formula-desc">Prírodná kozmetika a parfumy so skutočným príbehom — toto je presne to, čo dnešní zákazníci hľadajú.</div>
+        <div class="formula-check">✓ SAVON to spĺňa</div>
+      </div>
+      <div class="formula-item">
+        <div class="formula-num">03</div>
+        <div class="formula-title">Silná ponuka</div>
+        <div class="formula-desc">Bundles, 1+1, darčekové balenia, vzorky — tieto nástroje výrazne zvyšujú priemernú hodnotu objednávky. Tu nastupujeme my.</div>
+        <div class="formula-check">↗ Tu pomôžeme</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USP -->
+<section class="cream">
+  <div class="wrap">
+    <span class="label">Vaše USP</span>
+    <h2 class="serif" style="font-size:1.8rem;font-weight:400;max-width:560px;line-height:1.3">Prečo je SAVON iná — a prečo to treba ukázať svetu</h2>
+    <div class="divider"></div>
+    <div class="usp-card">
+      <h3>Vlastné pestovanie bylin</h3>
+      <p>Toto je váš najsilnejší argument oproti konkurencii. Skoro žiadna slovenská kozmetická značka nemôže povedať, že suroviny dopestuje vlastnoručne. Tento príbeh treba vidieť — v každej reklame, v každom videu, v každom príspevku. Nie „prírodná kozmetika." Ale „z bylinky, ktorú sme dopestovali na vlastnom záhone."</p>
+      <div class="tag">Kľúčová konkurenčná výhoda</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:2rem">
+      <div style="border:1px solid var(--border);padding:1.5rem;background:var(--white)">
+        <div style="font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem">Príbeh zakladateľky</div>
+        <p style="font-size:.85rem;color:var(--grey);line-height:1.7">Iveta začala kvôli synovi s ekzémom. Autentický príbeh, ktorý rezonuje — a predáva.</p>
+      </div>
+      <div style="border:1px solid var(--border);padding:1.5rem;background:var(--white)">
+        <div style="font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem">Bestsellery</div>
+        <p style="font-size:.85rem;color:var(--grey);line-height:1.7">Krémy, prírodné mydlá, bambucké maslo — ideálne produkty pre prvé kampane.</p>
+      </div>
+      <div style="border:1px solid var(--border);padding:1.5rem;background:var(--white)">
+        <div style="font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem">Expanzia</div>
+        <p style="font-size:.85rem;color:var(--grey);line-height:1.7">Poľsko je logický ďalší krok. Meta reklama umožňuje geografické škálovanie bez veľkých nákladov.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATÉGIA -->
+<section id="strategy">
+  <div class="wrap">
+    <div class="sec-hdr">
+      <span class="label">Naša stratégia</span>
+      <h2>Ako konkrétne porastie SAVON</h2>
+      <p>Sociálne siete sú pre prírodné kozmetické značky ideálnym prostredím — ľudia tam nakupujú spontánne a vizuálny obsah s príbehom funguje výborne.</p>
+    </div>
+    <div class="strat-grid">
+      <div class="strat-card">
+        <h4>Obsah & edukácia</h4>
+        <ul>
+          <li>Ukážeme pestovanie bylin a výrobu produktov</li>
+          <li>Edukatívny obsah o prírodných ingredienciách</li>
+          <li>Príbeh Ivety ako tvár značky</li>
+          <li>Produktové videá — textúry, vôňa, použitie</li>
+        </ul>
+      </div>
+      <div class="strat-card">
+        <h4>Akvizícia nových zákazníkov</h4>
+        <ul>
+          <li>Cielenie na ženy 25–55, záujem o prírodné produkty</li>
+          <li>Lookalike audiencie podľa existujúcich zákazníkov</li>
+          <li>Testovanie rôznych formátov (video, carousel, UGC)</li>
+          <li>Produktové bundles pre vyšší AOV</li>
+        </ul>
+      </div>
+      <div class="strat-card">
+        <h4>Remarketing & retencia</h4>
+        <ul>
+          <li>Návštevníci webu, ktorí nekúpili</li>
+          <li>Zákazníci, ktorý nakúpili — cross-sell, upsell</li>
+          <li>Sezónne kampane (Vianoce, Valentín, Deň matiek)</li>
+          <li>B2B segment — darčekové balenia pre firmy</li>
+        </ul>
+      </div>
+      <div class="strat-card">
+        <h4>Optimalizácia ponuky</h4>
+        <ul>
+          <li>Darčekové sety a bundles (vyšší AOV)</li>
+          <li>„Vyskúšaj set" — vzorky ako vstupný bod</li>
+          <li>Upsell pri pokladni (napr. + bambucké maslo)</li>
+          <li>Cross-sell: parfum + telový krém rovnakej línie</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMY -->
+<section class="cream">
+  <div class="wrap">
+    <span class="label">Platformy</span>
+    <h2 class="serif" style="font-size:1.8rem;font-weight:400;margin-bottom:.5rem">Meta Ads + Google Ads</h2>
+    <div class="divider"></div>
+    <div class="platform-row">
+      <div class="platform-card">
+        <span class="pl-name">Facebook & Instagram</span>
+        <h4>Meta Ads — budovanie a predaj</h4>
+        <ul>
+          <li>Kompletné nastavenie Pixel + Conversion API trackingu</li>
+          <li>TOF kampaň — nové publiká, awareness, edukácia</li>
+          <li>BOF kampaň — remarketing, katalógová reklama</li>
+          <li>A/B testovanie kreatív a cielení</li>
+          <li>Týždenný reporting a optimalizácia</li>
+        </ul>
+      </div>
+      <div class="platform-card">
+        <span class="pl-name">Google Search & Shopping</span>
+        <h4>Google Ads — zachytenie záujmu</h4>
+        <ul>
+          <li>Audit existujúcich kampaní a konverzných akcií</li>
+          <li>Search kampane na kľúčové produkty</li>
+          <li>Shopping / Performance Max kampane</li>
+          <li>Škálovanie v sezóne (Vianoce, jar)</li>
+          <li>Prepojenie s Meta pre synergický efekt</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-hdr">
+      <span class="label">Prípadové štúdie</span>
+      <h2>Výsledky, ktoré sme dosiahli</h2>
+      <p>Dve reálne spolupráce s e-shopmi v segmente, kde sú podmienky podobné ako u SAVON.</p>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-top">
+          <div class="co">Módny e-shop · Meta Ads</div>
+          <h4>Pánska Elegancia</h4>
+        </div>
+        <div class="case-body">
+          <p class="case-desc">Klient mal len katalógovú reklamu bez stratégie. Prevzali sme správu, pripravili bannery a videá, nastavili full-funnel. Výsledok za prvý mesiac v sezóne:</p>
+          <div class="case-metrics">
+            <div>
+              <div class="case-m-v">€7 000</div>
+              <div class="case-m-l">Ad spend</div>
+            </div>
+            <div>
+              <div class="case-m-v">€40 000</div>
+              <div class="case-m-l">Tržby</div>
+            </div>
+          </div>
+          <div class="roas-highlight">
+            <div>
+              <div class="roas-v">5,5×</div>
+              <div class="roas-l">ROAS — za 1 mesiac spolupráce</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-top">
+          <div class="co">Špecializovaný e-shop · Meta + Google</div>
+          <h4>Fullgas.shop</h4>
+        </div>
+        <div class="case-body">
+          <p class="case-desc">Majiteľ spravoval reklamy manuálne bez škálovania. Spustili sme Meta + Google kampane. Výsledky za 3 mesiace spolupráce:</p>
+          <div class="case-metrics">
+            <div>
+              <div class="case-m-v">€50 000</div>
+              <div class="case-m-l">Obrat e-shopu</div>
+            </div>
+            <div>
+              <div class="case-m-v">€6 500</div>
+              <div class="case-m-l">Čistý zisk (po nákladoch)</div>
+            </div>
+          </div>
+          <div class="roas-highlight">
+            <div>
+              <div class="roas-v">€11 000</div>
+              <div class="roas-l">Marža — Meta + Google + predajňa Senica</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="cream">
+  <div class="wrap" style="text-align:center">
+    <span class="label" style="text-align:center;display:block">Investícia</span>
+    <h2 class="serif" style="font-size:1.8rem;font-weight:400">Transparentné ceny</h2>
+    <div class="divider center"></div>
+    <div class="price-box">
+      <div class="price-v">480 €</div>
+      <div class="price-note">mesačný management fee</div>
+      <hr class="price-divider">
+      <ul class="price-list">
+        <li>Kompletná stratégia a nastavenie kampaní (Meta + Google)</li>
+        <li>Pixel, Conversion API, tracking setup</li>
+        <li>Kreatíva — bannery, texty, videá</li>
+        <li>Týždenný reporting a optimalizácia</li>
+        <li>Komunikácia cez Basecamp (prehľad všetkého na jednom mieste)</li>
+        <li>Odporúčania pre e-shop — bundles, upsell, ponuky</li>
+      </ul>
+    </div>
+    <div class="adspend-note">
+      <strong>Ad spend (budget do reklamy):</strong> Odporúčame minimálne <strong>600 € / platforma</strong> (Meta + Google = 1 200 €/mes). Budget ide priamo do reklamných systémov — nie nám. Čím vyšší budget, tým rýchlejší rast a väčší priestor na testovanie.
+    </div>
+    <p style="font-size:.8rem;color:var(--grey);margin-top:1.5rem">Fakturácia prebieha vopred na začiatku každého mesiaca. Prvý mesiac je testovací — ak nebudete spokojní, bez záväzkov skončíme.</p>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section id="next">
+  <div class="wrap">
+    <div class="sec-hdr">
+      <span class="label">Ako začneme</span>
+      <h2>Ďalší krok</h2>
+      <p>Po odsúhlasení spolupráce sú nasledujúce kroky jednoduché a rýchle. Prvé kampane môžeme spustiť do 7–10 dní.</p>
+    </div>
+    <ol class="steps-list">
+      <li class="step-item">
+        <div class="step-n">01</div>
+        <div class="step-text">
+          <h4>Zdieľanie prístupov</h4>
+          <p>Admin prístup k Facebook Business Manageru, Google Ads účtu a Google Analytics. V prípade potreby pomôžeme s nastavením.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">02</div>
+        <div class="step-text">
+          <h4>Pozvanie na Basecamp</h4>
+          <p>Naša projektová platforma pre komunikáciu — všetko na jednom mieste, žiadne stratené správy. Zdieľame tam podklady, reporty a plány.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">03</div>
+        <div class="step-text">
+          <h4>Faktúra za prvý mesiac</h4>
+          <p>Fakturácia prebieha vopred. Po uhradení ihneď začíname s auditom, trackingom a prípravou prvých kampaní.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-n">04</div>
+        <div class="step-text">
+          <h4>Spustenie kampaní</h4>
+          <p>Do 7–10 dní od začatia spolupráce sú prvé kampane živé. Prvý mesiac je testovací — zbierame dáta, optimalizujeme, škálujeme.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section id="footer">
+  <div class="wrap" style="text-align:center">
+    <h2>Začnime rásť spolu.</h2>
+    <p>Váš príbeh, vaše byliny, vaše produkty — my k tomu pridáme systém a viditeľnosť.</p>
+    <a href="https://calendly.com/dolphinwave-media/30min" target="_blank" class="btn-white">Dohodnúť spoluprácu</a>
+    <div class="footer-meta">
+      <div style="margin-bottom:.5rem;font-family:'Playfair Display',serif;font-size:.85rem;color:rgba(255,255,255,.4);letter-spacing:.1em">SAVON × DOLPHIN WAVE MEDIA · 2026</div>
+      Damián Drahovský · damian.drahovsky@gmail.com · +421 915 327 052
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
